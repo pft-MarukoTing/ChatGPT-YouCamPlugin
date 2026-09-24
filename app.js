@@ -280,6 +280,36 @@ function createProductButton(item, selected, onSelect, compact = false) {
   return button;
 }
 
+function measureMakeupItemHeight() {
+  const probe = document.createElement("section");
+  probe.className = "recommendation-category-group";
+  probe.style.cssText = "position:absolute; visibility:hidden; pointer-events:none;";
+  const heading = createCategoryHeading("lip");
+  const row = document.createElement("div");
+  row.className = "recommendation-row";
+  row.append(createProductButton(catalog.lip[0], false, () => {}, true));
+  probe.append(heading, row);
+  recommendationShelf.append(probe);
+  const height = probe.getBoundingClientRect().height;
+  probe.remove();
+  return height;
+}
+
+function fitLookTileSize() {
+  recommendationShelf.style.removeProperty("--look-tile-width");
+  recommendationShelf.style.removeProperty("--look-tile-height");
+  const targetHeight = measureMakeupItemHeight();
+  const defaultVisualWidth = 91;
+  const defaultVisualHeight = 102;
+  const defaultCardHeight = defaultVisualHeight + 4 /* gap */ + 32 /* label */;
+  const deficit = targetHeight - defaultCardHeight;
+  if (deficit <= 0) return;
+  const newVisualHeight = defaultVisualHeight + deficit;
+  const newVisualWidth = defaultVisualWidth * (newVisualHeight / defaultVisualHeight);
+  recommendationShelf.style.setProperty("--look-tile-height", `${newVisualHeight}px`);
+  recommendationShelf.style.setProperty("--look-tile-width", `${newVisualWidth}px`);
+}
+
 let recommendationViewMaxHeight = 0;
 let pendingPeekItem = null;
 function fitRecommendationViewHeight() {
@@ -330,8 +360,11 @@ function renderRecommendationChooser() {
       }, true));
     };
     if (activeSection === "look") {
+      if (sectionChanged) fitLookTileSize();
       catalog.look.forEach((item) => appendItem(item, recommendationShelf));
     } else {
+      recommendationShelf.style.removeProperty("--look-tile-width");
+      recommendationShelf.style.removeProperty("--look-tile-height");
       MAKEUP_CATEGORIES.forEach((category) => {
         const group = document.createElement("section");
         group.className = "recommendation-category-group";

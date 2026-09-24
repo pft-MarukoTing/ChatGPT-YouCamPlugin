@@ -314,8 +314,8 @@ button:focus-visible, a:focus-visible { outline: 3px solid rgba(3,173,226,.45); 
 .product-eyeliner .product-visual img, .product-blush .product-visual img, .product-eyelashes .product-visual img, .product-eyebrow .product-visual img, .product-eyeshadow .product-visual img { object-fit: contain; background: #fff; }
 .product-visual i { width: 52px; height: 52px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,.06), 0 3px 9px rgba(0,0,0,.12); }
 .product-card > b { width: 100%; padding: 0 4px; min-height: 32px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; white-space: normal; word-break: break-word; text-align: center; font-size: 10px; line-height: 16px; font-weight: 400; }
-.product-card.compact { flex-basis: 91px; width: 91px; }
-.product-card.compact .product-visual { height: 102px; border-radius: 6px; box-shadow: none; }
+.product-card.compact { flex-basis: var(--look-tile-width, 91px); width: var(--look-tile-width, 91px); }
+.product-card.compact .product-visual { height: var(--look-tile-height, 102px); border-radius: 6px; box-shadow: none; }
 .product-card.compact .product-visual i { width: 58px; height: 58px; }
 .product-card.selected .look-selected-mark { background: var(--youcam); border-color: var(--youcam); color: #fff; }
 
