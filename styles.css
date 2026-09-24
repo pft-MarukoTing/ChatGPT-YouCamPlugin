@@ -163,7 +163,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid rgba(3,173,226,.45); 
 .camera-view.mirrored > img { transform: scaleX(-1) scale(var(--zoom)); }
 .camera-vignette { position: absolute; inset: 0; box-shadow: inset 0 -70px 70px rgba(0,0,0,.12), inset 0 0 40px rgba(0,0,0,.08); pointer-events: none; }
 .camera-toolbar { position: absolute; right: 12px; bottom: 16px; z-index: 4; display: flex; flex-direction: column; gap: 8px; }
-.intensity-slider { position: absolute; left: 16px; top: 70px; bottom: 16px; z-index: 4; display: flex; justify-content: center; padding: 8px 0; transition: bottom .22s cubic-bezier(.2,.8,.2,1); }
+.intensity-slider { position: absolute; left: 24px; top: 70px; bottom: 16px; z-index: 4; display: flex; justify-content: center; padding: 8px 0; transition: bottom .22s cubic-bezier(.2,.8,.2,1); }
 .intensity-track { position: relative; width: 4px; height: 100%; border-radius: 999px; background: rgba(255,255,255,.35); }
 .intensity-fill { position: absolute; left: 0; right: 0; bottom: 0; height: var(--intensity, 70%); border-radius: inherit; background: var(--youcam); }
 .intensity-handle { position: absolute; left: 50%; bottom: var(--intensity, 70%); transform: translate(-50%, 50%); width: 16px; height: 16px; border: 0; border-radius: 50%; background: var(--youcam); box-shadow: 0 0 0 1px rgba(255,255,255,.5), 0 3px 10px rgba(0,0,0,.1); cursor: ns-resize; touch-action: none; transition: bottom .12s ease; }
