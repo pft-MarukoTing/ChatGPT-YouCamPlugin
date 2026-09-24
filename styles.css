@@ -324,7 +324,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid rgba(3,173,226,.45); 
 [data-theme="dark"] .multi-picker::before { background-image: url("assets/bg.png"); }
 .multi-picker > * { position: relative; }
 .multi-picker .makeup-mode-tabs { width: max-content; height: 36px; margin: 8px 0; padding: 3px; display: flex; align-items: stretch; gap: 3px; border-radius: 999px; background: var(--fill-weak); }
-.multi-picker .makeup-tabs { height: 33px; display: flex; align-items: stretch; gap: 20px; border-bottom: 1px solid var(--stroke-weak); overflow-x: auto; scrollbar-width: none; }
+.multi-picker .makeup-tabs { height: 33px; display: flex; align-items: stretch; gap: 20px; border-bottom: 1px solid var(--stroke-weak); overflow-x: hidden; scrollbar-width: none; }
 .multi-picker .makeup-tabs::-webkit-scrollbar { display: none; }
 .multi-picker .makeup-tabs button { flex: none; }
 .multi-picker .makeup-mode-tabs button, .multi-picker .makeup-tabs button { position: relative; border: 0; font-weight: 700; }
@@ -405,6 +405,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid rgba(3,173,226,.45); 
   .recommendation-shelf:not(.expanded-makeup) { justify-content: flex-start; margin: 0 -24px; padding: 6px 0 0; transition: padding .18s; }
   .recommendation-shelf:not(.expanded-makeup).shelf-at-start { padding-left: 24px; }
   .recommendation-shelf:not(.expanded-makeup).shelf-at-end { padding-right: 24px; }
+  .makeup-tab-icon { display: none; }
 }
 
 @media (max-width: 420px) {

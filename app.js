@@ -543,6 +543,28 @@ function renderTabs() {
   }
 }
 
+function scrollTabIntoView(category) {
+  const btn = makeupTabs.querySelector(`[data-category="${category}"]`);
+  if (!btn) return;
+  const btnRect = btn.getBoundingClientRect();
+  const tabsRect = makeupTabs.getBoundingClientRect();
+  if (btnRect.left < tabsRect.left) {
+    makeupTabs.scrollBy({ left: btnRect.left - tabsRect.left - 12, behavior: "smooth" });
+  } else if (btnRect.right > tabsRect.right) {
+    makeupTabs.scrollBy({ left: btnRect.right - tabsRect.right + 12, behavior: "smooth" });
+  }
+}
+
+function setActiveMakeupTab(category) {
+  activeMakeupCategory = category;
+  Array.from(makeupTabs.children).forEach((btn) => {
+    const isActive = btn.dataset.category === category;
+    btn.classList.toggle("active", isActive);
+    btn.setAttribute("aria-selected", String(isActive));
+  });
+  scrollTabIntoView(category);
+}
+
 let suppressMakeupSpy = false;
 let suppressMakeupSpyTimer;
 function scrollShelfToCategory(category) {
@@ -551,12 +573,7 @@ function scrollShelfToCategory(category) {
   suppressMakeupSpy = true;
   window.clearTimeout(suppressMakeupSpyTimer);
   suppressMakeupSpyTimer = window.setTimeout(() => { suppressMakeupSpy = false; }, 500);
-  activeMakeupCategory = category;
-  Array.from(makeupTabs.children).forEach((btn) => {
-    const isActive = btn.dataset.category === category;
-    btn.classList.toggle("active", isActive);
-    btn.setAttribute("aria-selected", String(isActive));
-  });
+  setActiveMakeupTab(category);
   const delta = group.getBoundingClientRect().left - productShelf.getBoundingClientRect().left;
   productShelf.scrollBy({ left: delta, behavior: "smooth" });
 }
@@ -571,12 +588,7 @@ function updateMakeupCategorySpy() {
     if (dist < closestDist) { closestDist = dist; closest = group; }
   });
   if (!closest || closest.dataset.category === activeMakeupCategory) return;
-  activeMakeupCategory = closest.dataset.category;
-  Array.from(makeupTabs.children).forEach((btn) => {
-    const isActive = btn.dataset.category === activeMakeupCategory;
-    btn.classList.toggle("active", isActive);
-    btn.setAttribute("aria-selected", String(isActive));
-  });
+  setActiveMakeupTab(closest.dataset.category);
 }
 productShelf.addEventListener("scroll", updateMakeupCategorySpy);
 
