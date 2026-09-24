@@ -411,7 +411,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid rgba(3,173,226,.45); 
   .camera-toolbar [data-action="zoom-in"], .camera-toolbar [data-action="zoom-out"] { display: none; }
   .tool-back-button.with-label { width: 35px; padding: 0; gap: 0; justify-content: center; }
   #vtoBackLabel { display: none; }
-  .camera-toolbar { top: 57px; justify-content: space-between; gap: 0; }
+  .camera-toolbar { top: 57px; justify-content: flex-end; gap: 8px; }
 }
 
 @media (max-width: 420px) {
