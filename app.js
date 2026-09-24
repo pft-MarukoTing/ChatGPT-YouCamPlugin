@@ -592,6 +592,13 @@ function updateMakeupCategorySpy() {
 }
 productShelf.addEventListener("scroll", updateMakeupCategorySpy);
 
+function updateProductShelfEdgeState() {
+  const maxScroll = productShelf.scrollWidth - productShelf.clientWidth;
+  productShelf.classList.toggle("shelf-at-start", productShelf.scrollLeft <= 1);
+  productShelf.classList.toggle("shelf-at-end", productShelf.scrollLeft >= maxScroll - 1);
+}
+productShelf.addEventListener("scroll", updateProductShelfEdgeState);
+
 function renderMultiPicker() {
   const sectionChanged = productShelf.dataset.renderedSection !== activeSection;
   const preservedScrollLeft = productShelf.scrollLeft;
@@ -632,6 +639,7 @@ function renderMultiPicker() {
   }
   productShelf.scrollLeft = sectionChanged ? 0 : preservedScrollLeft;
   updateMakeupCategorySpy();
+  updateProductShelfEdgeState();
 }
 
 function resetContentSelections() {
