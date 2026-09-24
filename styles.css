@@ -406,6 +406,9 @@ button:focus-visible, a:focus-visible { outline: 3px solid rgba(3,173,226,.45); 
   .recommendation-shelf:not(.expanded-makeup).shelf-at-start { padding-left: 24px; }
   .recommendation-shelf:not(.expanded-makeup).shelf-at-end { padding-right: 24px; }
   .makeup-tab-icon { display: none; }
+  .camera-toolbar [data-action="zoom-in"], .camera-toolbar [data-action="zoom-out"] { display: none; }
+  .tool-back-button.with-label { width: 32px; padding: 0; gap: 0; }
+  #vtoBackLabel { display: none; }
 }
 
 @media (max-width: 420px) {
