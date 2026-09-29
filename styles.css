@@ -290,7 +290,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid rgba(3,173,226,.45); 
 .try-photo-button:active:not(:disabled) { background: linear-gradient(var(--fill-press), var(--fill-press)), var(--youcam); transform: translateY(0); }
 .try-photo-button:disabled { background: var(--fill-disabled); color: #fff; cursor: not-allowed; opacity: .5; }
 :root[data-theme="dark"] .try-photo-button:disabled { color: var(--text-disabled); opacity: 1; }
-.try-live-button { min-width: 138px; padding: 0 15px 0 11px; border: 1px solid var(--stroke-brand-strong); background: transparent; color: var(--text-brand); display: flex; align-items: center; justify-content: center; gap: 7px; }
+.try-live-button { min-width: 138px; padding: 0 20px; border: 1px solid var(--stroke-brand-strong); background: transparent; color: var(--text-brand); display: flex; align-items: center; justify-content: center; }
 .try-live-button:hover { background: var(--fill-hover); transform: translateY(-1px); }
 .try-live-button:active { background: var(--fill-press); transform: translateY(0); }
 .try-live-button:focus-visible { outline: 3px solid var(--stroke-focus); outline-offset: 2px; }
